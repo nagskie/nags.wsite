@@ -460,3 +460,268 @@
         </div>
     </div>
 </section>
+
+<h3>Work Example</h3>
+			<div class = "alcohol">
+				<h1>Alcohol Eligibility Checker</h1>
+				<input type="text" id="age" placeholder="Age">
+				<button onclick="checkAlcohol()">Check Alcohol Eligibility</button>
+			</div>
+			<script>
+				function checkAlcohol() {
+					let age = Number(document.getElementById("age").value);
+					if (age >= 18) {
+						alert("You are eligible to purchase alcohol.");
+					} else {
+						alert("You are not eligible to purchase alcohol.");
+					}
+				}
+			</script>
+			<div class="container">
+				<h1>Simple Addition Calculator</h1>
+				<input type="text" id="num1" placeholder="First number">
+				<input type="text" id="num2" placeholder="Second number">
+				<button onclick="add()">Add</button>
+				<input type="text" id="addition" placeholder="Result" readonly>
+			</div>
+
+			<script>
+			function add() {
+					let n1 = Number(document.getElementById("num1").value);
+					let n2 = Number(document.getElementById("num2").value);
+					document.getElementById("addition").value = n1 + n2;
+				}
+			</script>
+
+			<div class="container">
+				<h1>Division Calculator</h1>
+				
+				<div class="input-group">
+					<label for="dividend">Dividend:</label>
+					<input type="number" id="dividend" placeholder="Enter first number">
+				</div>
+				
+				<div class="input-group">
+					<label for="divisor">Divisor:</label>
+					<input type="number" id="divisor" placeholder="Enter second number">
+				</div>
+				
+				<button onclick="divide()">Divide</button>
+				
+				<div class="result" id="result"></div>
+			</div>
+			
+			<script>
+				function divide() {
+					const dividend = parseFloat(document.getElementById('dividend').value);
+					const divisor = parseFloat(document.getElementById('divisor').value);
+					const resultDiv = document.getElementById('result');
+					
+					if (isNaN(dividend) || isNaN(divisor)) {
+						resultDiv.textContent = 'Please enter valid numbers';
+						resultDiv.classList.add('show');
+						return;
+					}
+					
+					if (divisor === 0) {
+						resultDiv.textContent = 'Cannot divide by zero';
+						resultDiv.classList.add('show');
+						return;
+					}
+					
+					const result = (dividend / divisor).toFixed(2);
+					resultDiv.textContent = `Result: ${result}`;
+					resultDiv.classList.add('show');
+				}
+				
+				document.getElementById('divisor').addEventListener('keypress', function(e) {
+					if (e.key === 'Enter') divide();
+				});
+			</script>
+
+			<div class="container">
+				<h1>Multiplication Calculator</h1>
+				<input type="number" id="mult1" placeholder="Enter first number">
+				<input type="number" id="mult2" placeholder="Enter second number">
+				<br>
+				<button onclick="multiply()">Multiply</button>
+				<div id="product"></div>
+			</div>
+
+			<script>
+				function multiply() {
+					const num1 = parseFloat(document.getElementById('mult1').value);
+					const num2 = parseFloat(document.getElementById('mult2').value);
+					
+					if (isNaN(num1) || isNaN(num2)) {
+						document.getElementById('product').textContent = 'Please enter valid numbers';
+						return;
+					}
+					
+					const product = num1 * num2;
+					document.getElementById('product').textContent = `${num1} × ${num2} = ${product}`;
+				}
+			</script>
+
+			<div class="container">
+				<h1>Subtraction Calculator</h1>
+				<input type="text" id="sub1" placeholder="First number">
+				<input type="text" id="sub2" placeholder="Second number">
+				<button onclick="sub()">Sub</button>
+				<input type="text" id="difference" placeholder="Result" readonly>
+			</div>
+
+
+			<script
+		>
+				function sub() {
+					let s1 = Number(document.getElementById("sub1").value);
+					let s2 = Number(document.getElementById("sub2").value);
+					document.getElementById("difference").value = s1 - s2;
+				}
+			</script>	
+
+			<div class = "HelloWorld">
+				<h1>Hello, World!</h1>
+				<button onclick="alert('Hello, World!')">Click Me!</button>
+			</div>
+
+			<div class = "birthday">
+				<h1>Birthday Greeting</h1>
+				<input type=" text" id="name" placeholder="Name">
+				<button onclick="Birthday()">Let see!</button>
+			</div>
+			<script>
+			function Birthday(){
+				let name = document.getElementById("name").value;
+				alert("Happy Birthday " + name + "! Wishing you a wonderful year ahead.");
+			}
+			
+			</script>
+
+			<div class="alcohol">
+				<h1>JavaScript Calculations</h1>
+				<script type = "text/javascript">
+					var sec = 60;
+					var min = 60;
+					var hr = 24;
+					document.write("Seconds in a minute: " + sec + "<br>");
+					document.write("Seconds in an hour: " + sec * min + "<br>");
+					document.write("Seconds in a day: " + sec * min * hr + "<br>");
+				</script>
+			</div>
+			
+			<div class = "ifelse">
+				<h1>If-Else Statement Example</h1>
+				<input type="text" id="ifelsename" placeholder="Name">
+				<button onclick="RUN()">RUN</button>
+			</div>
+			<script>
+				function RUN(){
+					let name = document.getElementById("ifelsename").value;
+					if(name === "Franz"){
+						alert("Hello Franz! Welcome back!");
+					} else {
+						alert("Hello " + name + "! Nice to meet you!");
+					}
+				}
+			</script>
+
+			<div class="alcohol">
+				<h1>Image Display Example</h1>
+				<button onclick="sad()">Sad face</button>
+				<button onclick="happy()">Happy face</button>
+
+				<div class="display-area" style="margin-top: 20px;">
+					<img id="face-image" src="" alt="" style="max-width: 300px; display: none; border-radius: 10px;">
+				</div>
+				<script>
+					function sad() {
+						const imgElement = document.getElementById('face-image');
+						imgElement.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuUl-5vHCj28yOLm2VXJk_Z8K4EFNWFEtVZw&s";
+						imgElement.style.display = "block"; // Makes the image visible
+					}
+
+					function happy() {
+						const imgElement = document.getElementById('face-image');
+						imgElement.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnt3YMTCH0l9Lau3-MmSQq61jmuFbBlx8tDQ&s";
+						imgElement.style.display = "block"; // Makes the image visible
+					}
+				</script>
+			</div>
+
+			<div class = "alcohol">
+				<h1>Prompt Example</h1>
+				<input type=" text" id="PromptName" placeholder="Name">
+				<button onclick="PROMPTNAME()">RUN</button>
+			</div>
+			<script>
+				function PROMPTNAME(){
+					let promptname = document.getElementById("PromptName").value;
+			
+					alert("Hello " + promptname + "! Nice to meet you!");
+				}
+			</script>
+
+			<div class = "alcohol">
+				<h1>Name Popup</h1>
+				<input type=" text" id="namepopup" placeholder="Name">
+				<button onclick="NAMEPOPUP()">RUN</button>
+			</div>
+			<script>  
+				function NAMEPOPUP(){
+					let namepopup = document.getElementById("namepopup").value;
+			
+					alert("Your name is " + namepopup );
+				}
+			</script>
+
+			<div class="alcohol">
+				<h1>Show Current Date</h1>
+				<button onclick="showDate()">Show Current Date</button>
+			</div>
+			<script>
+				function showDate() {
+					let currentDate = new Date();
+					alert("Today is: " + currentDate.toDateString());
+				}
+			</script>
+
+			<div class="timer">
+				<h1>Countdown Timer</h1>
+				<input type="text" id="timer" readonly value="60">
+				<button id="start-btn" onclick="startTimer()">Start Timer</button>
+			</div>
+			
+			<script>
+				var timeLeft = 60;
+				var timerId;
+
+				function startTimer() {
+					// 1. Disable the button so it can't be clicked again
+					document.getElementById("start-btn").disabled = true;
+					
+					// 2. Start the interval
+					timerId = setInterval(countdown, 1000);
+				}
+
+				function countdown() {
+					const timerInput = document.getElementById("timer");
+					const startBtn = document.getElementById("start-btn");
+
+					if (timeLeft <= 0) {
+						clearInterval(timerId);
+						timerInput.value = 0;
+						alert("Time's up!");
+
+						// 3. Re-enable the button so they can try again
+						startBtn.disabled = false;
+						
+						// 4. Reset the time variable for the next run
+						timeLeft = 60; 
+					} else {
+						timerInput.value = timeLeft;
+						timeLeft--;
+					}
+				}
+			</script>
