@@ -6,7 +6,7 @@
     <title>Mekus</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
+</head> 
 <body>
 
     <header class="header">
@@ -462,266 +462,311 @@
 </section>
 
 <h3>Work Example</h3>
-			<div class = "alcohol">
-				<h1>Alcohol Eligibility Checker</h1>
-				<input type="text" id="age" placeholder="Age">
-				<button onclick="checkAlcohol()">Check Alcohol Eligibility</button>
-			</div>
-			<script>
-				function checkAlcohol() {
-					let age = Number(document.getElementById("age").value);
-					if (age >= 18) {
-						alert("You are eligible to purchase alcohol.");
-					} else {
-						alert("You are not eligible to purchase alcohol.");
-					}
-				}
-			</script>
-			<div class="container">
-				<h1>Simple Addition Calculator</h1>
-				<input type="text" id="num1" placeholder="First number">
-				<input type="text" id="num2" placeholder="Second number">
-				<button onclick="add()">Add</button>
-				<input type="text" id="addition" placeholder="Result" readonly>
-			</div>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            color: #333;
+        }
 
-			<script>
-			function add() {
-					let n1 = Number(document.getElementById("num1").value);
-					let n2 = Number(document.getElementById("num2").value);
-					document.getElementById("addition").value = n1 + n2;
-				}
-			</script>
+        /* Container for each widget */
+        .container, .alcohol, .HelloWorld, .birthday, .ifelse, .timer {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.2s;
+        }
 
-			<div class="container">
-				<h1>Division Calculator</h1>
-				
-				<div class="input-group">
-					<label for="dividend">Dividend:</label>
-					<input type="number" id="dividend" placeholder="Enter first number">
-				</div>
-				
-				<div class="input-group">
-					<label for="divisor">Divisor:</label>
-					<input type="number" id="divisor" placeholder="Enter second number">
-				</div>
-				
-				<button onclick="divide()">Divide</button>
-				
-				<div class="result" id="result"></div>
-			</div>
-			
-			<script>
-				function divide() {
-					const dividend = parseFloat(document.getElementById('dividend').value);
-					const divisor = parseFloat(document.getElementById('divisor').value);
-					const resultDiv = document.getElementById('result');
-					
-					if (isNaN(dividend) || isNaN(divisor)) {
-						resultDiv.textContent = 'Please enter valid numbers';
-						resultDiv.classList.add('show');
-						return;
-					}
-					
-					if (divisor === 0) {
-						resultDiv.textContent = 'Cannot divide by zero';
-						resultDiv.classList.add('show');
-						return;
-					}
-					
-					const result = (dividend / divisor).toFixed(2);
-					resultDiv.textContent = `Result: ${result}`;
-					resultDiv.classList.add('show');
-				}
-				
-				document.getElementById('divisor').addEventListener('keypress', function(e) {
-					if (e.key === 'Enter') divide();
-				});
-			</script>
+        .container:hover, .alcohol:hover, .HelloWorld:hover, .birthday:hover, .ifelse:hover, .timer:hover {
+            transform: translateY(-5px);
+        }
 
-			<div class="container">
-				<h1>Multiplication Calculator</h1>
-				<input type="number" id="mult1" placeholder="Enter first number">
-				<input type="number" id="mult2" placeholder="Enter second number">
-				<br>
-				<button onclick="multiply()">Multiply</button>
-				<div id="product"></div>
-			</div>
+        h1 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
-			<script>
-				function multiply() {
-					const num1 = parseFloat(document.getElementById('mult1').value);
-					const num2 = parseFloat(document.getElementById('mult2').value);
-					
-					if (isNaN(num1) || isNaN(num2)) {
-						document.getElementById('product').textContent = 'Please enter valid numbers';
-						return;
-					}
-					
-					const product = num1 * num2;
-					document.getElementById('product').textContent = `${num1} × ${num2} = ${product}`;
-				}
-			</script>
+        /* Input Styling */
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
 
-			<div class="container">
-				<h1>Subtraction Calculator</h1>
-				<input type="text" id="sub1" placeholder="First number">
-				<input type="text" id="sub2" placeholder="Second number">
-				<button onclick="sub()">Sub</button>
-				<input type="text" id="difference" placeholder="Result" readonly>
-			</div>
+        input[readonly] {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+            font-weight: bold;
+            color: #2c3e50;
+        }
 
+        /* Button Styling */
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background 0.3s;
+        }
 
-			<script
-		>
-				function sub() {
-					let s1 = Number(document.getElementById("sub1").value);
-					let s2 = Number(document.getElementById("sub2").value);
-					document.getElementById("difference").value = s1 - s2;
-				}
-			</script>	
+        button:hover {
+            background-color: #2980b9;
+        }
 
-			<div class = "HelloWorld">
-				<h1>Hello, World!</h1>
-				<button onclick="alert('Hello, World!')">Click Me!</button>
-			</div>
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
 
-			<div class = "birthday">
-				<h1>Birthday Greeting</h1>
-				<input type=" text" id="name" placeholder="Name">
-				<button onclick="Birthday()">Let see!</button>
-			</div>
-			<script>
-			function Birthday(){
-				let name = document.getElementById("name").value;
-				alert("Happy Birthday " + name + "! Wishing you a wonderful year ahead.");
-			}
-			
-			</script>
+        /* Results & Labels */
+        .result, #product {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+        }
 
-			<div class="alcohol">
-				<h1>JavaScript Calculations</h1>
-				<script type = "text/javascript">
-					var sec = 60;
-					var min = 60;
-					var hr = 24;
-					document.write("Seconds in a minute: " + sec + "<br>");
-					document.write("Seconds in an hour: " + sec * min + "<br>");
-					document.write("Seconds in a day: " + sec * min * hr + "<br>");
-				</script>
-			</div>
-			
-			<div class = "ifelse">
-				<h1>If-Else Statement Example</h1>
-				<input type="text" id="ifelsename" placeholder="Name">
-				<button onclick="RUN()">RUN</button>
-			</div>
-			<script>
-				function RUN(){
-					let name = document.getElementById("ifelsename").value;
-					if(name === "Franz"){
-						alert("Hello Franz! Welcome back!");
-					} else {
-						alert("Hello " + name + "! Nice to meet you!");
-					}
-				}
-			</script>
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
 
-			<div class="alcohol">
-				<h1>Image Display Example</h1>
-				<button onclick="sad()">Sad face</button>
-				<button onclick="happy()">Happy face</button>
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
 
-				<div class="display-area" style="margin-top: 20px;">
-					<img id="face-image" src="" alt="" style="max-width: 300px; display: none; border-radius: 10px;">
-				</div>
-				<script>
-					function sad() {
-						const imgElement = document.getElementById('face-image');
-						imgElement.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuUl-5vHCj28yOLm2VXJk_Z8K4EFNWFEtVZw&s";
-						imgElement.style.display = "block"; // Makes the image visible
-					}
+        /* Specific styles for Image area */
+        .display-area {
+            text-align: center;
+            min-height: 100px;
+        }
 
-					function happy() {
-						const imgElement = document.getElementById('face-image');
-						imgElement.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnt3YMTCH0l9Lau3-MmSQq61jmuFbBlx8tDQ&s";
-						imgElement.style.display = "block"; // Makes the image visible
-					}
-				</script>
-			</div>
+        #face-image {
+            margin: 0 auto;
+            border: 4px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
 
-			<div class = "alcohol">
-				<h1>Prompt Example</h1>
-				<input type=" text" id="PromptName" placeholder="Name">
-				<button onclick="PROMPTNAME()">RUN</button>
-			</div>
-			<script>
-				function PROMPTNAME(){
-					let promptname = document.getElementById("PromptName").value;
-			
-					alert("Hello " + promptname + "! Nice to meet you!");
-				}
-			</script>
+    <div class="alcohol">
+        <h1>Alcohol Eligibility Checker</h1>
+        <input type="number" id="age" placeholder="Enter your age">
+        <button onclick="checkAlcohol()">Check Eligibility</button>
+    </div>
 
-			<div class = "alcohol">
-				<h1>Name Popup</h1>
-				<input type=" text" id="namepopup" placeholder="Name">
-				<button onclick="NAMEPOPUP()">RUN</button>
-			</div>
-			<script>  
-				function NAMEPOPUP(){
-					let namepopup = document.getElementById("namepopup").value;
-			
-					alert("Your name is " + namepopup );
-				}
-			</script>
+    <div class="container">
+        <h1>Simple Addition</h1>
+        <input type="number" id="num1" placeholder="First number">
+        <input type="number" id="num2" placeholder="Second number">
+        <button onclick="add()">Add Numbers</button>
+        <p>Result:</p>
+        <input type="text" id="addition" placeholder="Result" readonly>
+    </div>
 
-			<div class="alcohol">
-				<h1>Show Current Date</h1>
-				<button onclick="showDate()">Show Current Date</button>
-			</div>
-			<script>
-				function showDate() {
-					let currentDate = new Date();
-					alert("Today is: " + currentDate.toDateString());
-				}
-			</script>
+    <div class="container">
+        <h1>Division Calculator</h1>
+        <div class="input-group">
+            <label>Dividend:</label>
+            <input type="number" id="dividend" placeholder="Enter first number">
+        </div>
+        <div class="input-group">
+            <label>Divisor:</label>
+            <input type="number" id="divisor" placeholder="Enter second number">
+        </div>
+        <button onclick="divide()">Divide</button>
+        <div class="result" id="result">Waiting for input...</div>
+    </div>
 
-			<div class="timer">
-				<h1>Countdown Timer</h1>
-				<input type="text" id="timer" readonly value="60">
-				<button id="start-btn" onclick="startTimer()">Start Timer</button>
-			</div>
-			
-			<script>
-				var timeLeft = 60;
-				var timerId;
+    <div class="container">
+        <h1>Multiplication</h1>
+        <input type="number" id="mult1" placeholder="Enter first number">
+        <input type="number" id="mult2" placeholder="Enter second number">
+        <button onclick="multiply()">Multiply</button>
+        <div id="product">Result will appear here</div>
+    </div>
 
-				function startTimer() {
-					// 1. Disable the button so it can't be clicked again
-					document.getElementById("start-btn").disabled = true;
-					
-					// 2. Start the interval
-					timerId = setInterval(countdown, 1000);
-				}
+    <div class="container">
+        <h1>Subtraction</h1>
+        <input type="number" id="sub1" placeholder="First number">
+        <input type="number" id="sub2" placeholder="Second number">
+        <button onclick="sub()">Subtract</button>
+        <input type="text" id="difference" placeholder="Result" readonly style="margin-top:15px;">
+    </div>
 
-				function countdown() {
-					const timerInput = document.getElementById("timer");
-					const startBtn = document.getElementById("start-btn");
+    <div class="HelloWorld">
+        <h1>Hello World</h1>
+        <p>Simple Alert Trigger:</p>
+        <button onclick="alert('Hello, World!')">Click Me!</button>
+    </div>
 
-					if (timeLeft <= 0) {
-						clearInterval(timerId);
-						timerInput.value = 0;
-						alert("Time's up!");
+    <div class="birthday">
+        <h1>Birthday Greeting</h1>
+        <input type="text" id="name" placeholder="Enter Name">
+        <button onclick="Birthday()">Generate Greeting</button>
+    </div>
 
-						// 3. Re-enable the button so they can try again
-						startBtn.disabled = false;
-						
-						// 4. Reset the time variable for the next run
-						timeLeft = 60; 
-					} else {
-						timerInput.value = timeLeft;
-						timeLeft--;
-					}
-				}
-			</script>
+    <div class="alcohol">
+        <h1>Time Calculations</h1>
+        <div id="time-display" style="background:#fefefe; padding:10px; line-height: 1.8;">
+            <script>
+                var sec = 60, min = 60, hr = 24;
+                document.write("⏱ Seconds in a minute: <strong>" + sec + "</strong><br>");
+                document.write("⌛ Seconds in an hour: <strong>" + (sec * min) + "</strong><br>");
+                document.write("📅 Seconds in a day: <strong>" + (sec * min * hr) + "</strong>");
+            </script>
+        </div>
+    </div>
+
+    <div class="ifelse">
+        <h1>Identity Check</h1>
+        <input type="text" id="ifelsename" placeholder="Enter 'Franz' or any name">
+        <button onclick="RUN()">Verify User</button>
+    </div>
+
+    <div class="alcohol">
+        <h1>Mood Display</h1>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <button style="background-color: #e74c3c;" onclick="sad()">Sad face</button>
+            <button style="background-color: #2ecc71;" onclick="happy()">Happy face</button>
+        </div>
+        <div class="display-area">
+            <img id="face-image" src="" alt="" style="max-width: 200px; display: none; border-radius: 50%;">
+        </div>
+    </div>
+
+    <div class="alcohol">
+        <h1>Name Popup</h1>
+        <input type="text" id="namepopup" placeholder="Your Name">
+        <button onclick="NAMEPOPUP()">Show Alert</button>
+    </div>
+
+    <div class="alcohol">
+        <h1>Current Date</h1>
+        <button onclick="showDate()">Show Current Date</button>
+    </div>
+
+    <div class="timer">
+        <h1>Countdown Timer</h1>
+        <input type="text" id="timer-display" readonly value="60" style="text-align: center; font-size: 2rem; height: 60px;">
+        <button id="start-btn" onclick="startTimer()">Start 60s Timer</button>
+    </div>
+
+    <script>
+        // Alcohol Logic
+        function checkAlcohol() {
+            let age = Number(document.getElementById("age").value);
+            if (age >= 18) alert("You are eligible to purchase alcohol.");
+            else alert("You are not eligible to purchase alcohol.");
+        }
+
+        // Math Logic
+        function add() {
+            let n1 = Number(document.getElementById("num1").value);
+            let n2 = Number(document.getElementById("num2").value);
+            document.getElementById("addition").value = n1 + n2;
+        }
+
+        function divide() {
+            const dividend = parseFloat(document.getElementById('dividend').value);
+            const divisor = parseFloat(document.getElementById('divisor').value);
+            const resultDiv = document.getElementById('result');
+            if (isNaN(dividend) || isNaN(divisor)) { resultDiv.textContent = 'Please enter valid numbers'; return; }
+            if (divisor === 0) { resultDiv.textContent = 'Cannot divide by zero'; return; }
+            const result = (dividend / divisor).toFixed(2);
+            resultDiv.textContent = `Result: ${result}`;
+        }
+
+        function multiply() {
+            const num1 = parseFloat(document.getElementById('mult1').value);
+            const num2 = parseFloat(document.getElementById('mult2').value);
+            const res = isNaN(num1) || isNaN(num2) ? 'Invalid Input' : `${num1} × ${num2} = ${num1 * num2}`;
+            document.getElementById('product').textContent = res;
+        }
+
+        function sub() {
+            let s1 = Number(document.getElementById("sub1").value);
+            let s2 = Number(document.getElementById("sub2").value);
+            document.getElementById("difference").value = s1 - s2;
+        }
+
+        // Greeting & Interaction
+        function Birthday() {
+            let name = document.getElementById("name").value;
+            alert("Happy Birthday " + name + "! 🎂");
+        }
+
+        function RUN() {
+            let name = document.getElementById("ifelsename").value;
+            if(name.toLowerCase() === "franz") alert("Hello Franz! Welcome back!");
+            else alert("Hello " + name + "! Nice to meet you!");
+        }
+
+        function NAMEPOPUP() {
+            let val = document.getElementById("namepopup").value;
+            alert("Your name is " + val);
+        }
+
+        function showDate() {
+            alert("Today is: " + new Date().toDateString());
+        }
+
+        // Image Logic
+        function sad() {
+            const img = document.getElementById('face-image');
+            img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuUl-5vHCj28yOLm2VXJk_Z8K4EFNWFEtVZw&s";
+            img.style.display = "block";
+        }
+
+        function happy() {
+            const img = document.getElementById('face-image');
+            img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnt3YMTCH0l9Lau3-MmSQq61jmuFbBlx8tDQ&s";
+            img.style.display = "block";
+        }
+
+        // Timer Logic
+        var timeLeft = 60;
+        var timerId;
+        function startTimer() {
+            document.getElementById("start-btn").disabled = true;
+            timerId = setInterval(countdown, 1000);
+        }
+        function countdown() {
+            const timerInput = document.getElementById("timer-display");
+            if (timeLeft <= 0) {
+                clearInterval(timerId);
+                alert("Time's up!");
+                document.getElementById("start-btn").disabled = false;
+                timeLeft = 60;
+            } else {
+                timeLeft--;
+                timerInput.value = timeLeft;
+            }
+        }
+    </script>
+</body>
